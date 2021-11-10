@@ -1,0 +1,21 @@
+.card{
+    border: none;
+    width: 450px;
+    height: 520px;
+    padding: 50px;
+    position: absolute;
+    top: 60%;
+    left: 75%;
+    transform: translate(-20%,-50%);
+}
+.text-center{
+    margin-top: -4%;
+    margin-bottom: 10%;
+}
+.mb-2{
+    margin-top: 10px;
+    font-size: 17px;
+}
+.t{
+    margin-top: 10%;
+}

@@ -1,0 +1,25 @@
+.card{
+    border: none;
+    width: 550px;
+    height: 770px;
+    padding: 50px;
+    position: absolute;
+    left: 55%;
+    margin-top: 6%;    
+    margin-bottom: 7%;
+    color: black;
+}
+.text-center{
+    margin-top: -4%;
+    margin-bottom: 4%;
+}
+.c{
+    display: inline-block;
+    width: 221px;
+}
+.t{
+    margin-top: 6%;
+}
+.mb-2{
+    font-size: 17px;
+}
