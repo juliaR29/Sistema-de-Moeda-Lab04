@@ -14,7 +14,7 @@ Professores e alunos devem ser capazes de consultar o extrato de sua conta, visu
 
 Para trocar moedas, o aluno deve selecionar uma das vantagens cadastradas no sistema. Elas incluem, por exemplo: desconto em restaurantes da universidade, desconto de mensalidade, ou compra de materiais específicos.
 
-Empresas que sejam realizar parceria também devem se cadastrar no sistema, incluindo as vantagens que deseja oferecer e o custo de cada uma dela (em moedas).
+Empresas que desejam realizar parceria também devem se cadastrar no sistema, incluindo as vantagens que deseja oferecer e o custo de cada uma dela (em moedas).
 
 Para cadastrar uma vantagem, a empresa parceira deve adicionar também uma descrição e foto do produto.
 
