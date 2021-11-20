@@ -1,6 +1,6 @@
 require("dotenv").config();
-const aluno = require("./routes/aluno");
-const empresa = require("./routes/empresa");
+const aluno = require("./controller/aluno");
+const empresa = require("./controller/empresa");
 
 const {usuarioLogado} = require("./lib/security");
 

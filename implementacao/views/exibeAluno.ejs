@@ -75,10 +75,10 @@
                 <label for="curso" class="form-label">Curso </label>
                 <input type="text" class="form-control" name="curso" value="<%=aluno.curso%>">
             </div>
+            <br>
             <button type="submit" class="btn btn-success">Salvar</button>
+            <button formmethod="POST" formaction="/api/aluno/<%=aluno.id%>?_method=DELETE" class="btn btn-lg btn-outline-secondary" id="delete" type="submit">Deletar</button>
         </form>
-        <form method="POST" style="display: inline" action="/api/aluno/<%=aluno.id%>?_method=DELETE">
-            <button class="btn btn-lg btn-outline-secondary" id="delete" type="submit">Deletar</button></form>
        
     </div>
 
