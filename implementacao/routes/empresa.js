@@ -9,12 +9,13 @@ app.get("/cadastroEmpresa", (req, res) => {
 
 //create
 app.post("/api/empresa", async function (req, res) {
-  const { name, email, password } = req.body;
+  const { nome, empresa, descricao, requisitos, beneficio, salario } = req.body;
 
   try {
-    await pool.query('INSERT INTO empresa (name, email, password) VALUES ($1, $2, $3)', [name, email, password]);
+    const resultado = await pool.query('INSERT INTO empresa (nome, empresa, descricao, requisitos, beneficio, salario) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id', [nome, empresa, descricao, requisitos, beneficio, salario]);
+    const id = resultado.rows[0].id;
     res.status(303)
-      .header("location", "/login")
+      .header("location", `/exibeEmpresa/${id}`)
       .send("Cadastrado!");
   } catch (error) {
     res.status(500)
@@ -25,27 +26,15 @@ app.post("/api/empresa", async function (req, res) {
 })
 
 //read
-app.get("/exibeEmpresa", async function (req, res)  {
-  const result = await pool.query('SELECT * FROM empresa');
-  res.render("exibeEmpresa", { empresas: result.rows });
+app.get("/exibeEmpresa/:id", async function (req, res)  {
+  const id = req.params.id;
+  const result = await pool.query('SELECT * FROM empresa WHERE id = $1', [id]);
+  res.render("exibeEmpresa", { empresa: result.rows[0]});
 });
 
 //update
-app.get("/editarEmpresa/:id", async function (req, res) {
-  const id = req.params.id;
-  let result;
-  if (id) {
-      result = await pool.query('SELECT * FROM empresa WHERE id = $1', [id]);
-  } else {
-      res.status(404)
-          .send("Not Found");
-      return;
-  }
 
-  res.render("exibeEmpresa", { empresa: result.rows[0] });
-})
-
-app.post("/editarEmpresa/:id", checkAuth, async function (req, res) {
+app.post("/api/empresa/:id", async function (req, res) {
   const { id } = req.params;
   const { nome, empresa, descricao, requisitos, beneficio, salario } = req.body;
 
@@ -62,7 +51,7 @@ app.post("/editarEmpresa/:id", checkAuth, async function (req, res) {
 })
 
 //delete
-app.delete("/deleteEmpresa/:id", async function (req, res) {
+app.delete("/api/empresa/:id", async function (req, res) {
   const { id } = req.params;
 
   try {

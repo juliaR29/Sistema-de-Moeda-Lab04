@@ -37,49 +37,46 @@
    
     <div class="container">
         
-        <form method="post" action="/editarAluno/<%=aluno.id%>">
+        <form method="post" action="/api/aluno/<%=aluno.id%>">
             <label class="col-sm-12 col-form-label col-form-label-lg" style="font-size: 25px;text-align: center;margin-bottom: 20px;"><b>Dados Cadastrais</b></label>
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome Completo </label>
-                <input type="text" class="form-control" value="<%=aluno.nome%>">
+                <input type="text" class="form-control" name="nome" value="<%=aluno.nome%>">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email </label>
-                <input type="email" class="form-control" value="<%=aluno.email%>">
+                <input type="email" class="form-control" name="email" value="<%=aluno.email%>">
             </div>
             <div class="mb-3 c">
                 <label for="cpf" class="form-label">CPF </label>
-                <input type="text" class="form-control" value="<%=aluno.cpf%>">
+                <input type="text" class="form-control" name="cpf" value="<%=aluno.cpf%>">
             </div>
             <div class="mb-3 c">
                 <label for="rg" class="form-label">RG </label>
-                <input type="text" class="form-control" value="<%=aluno.rg%>">
+                <input type="text" class="form-control" name="rg" value="<%=aluno.rg%>">
             </div>
             <div class="mb-3">
                 <label for="rua" class="form-label">Rua </label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="rua" value="<%=aluno.rua%>">
             </div>
             <div class="mb-3">
                 <label for="complemento" class="form-label">Complemento </label>
-                <input type="text" class="form-control" value="<%=aluno.complemento%>">
+                <input type="text" class="form-control" name="complemento" value="<%=aluno.complemento%>">
             </div>
             <div class="mb-3 ">
                 <label for="bairro" class="form-label">Bairro </label>
-                <input type="text" class="form-control" value="<%=aluno.bairro%>">
+                <input type="text" class="form-control" name="bairro" value="<%=aluno.bairro%>">
             </div>
             <div class="mb-3">
                 <label for="instituicao" class="form-label">Instituição de Ensino</label>
-                <input type="text" class="form-control" value="<%=aluno.instituicao%>">
+                <input type="text" class="form-control" name="instituicao" value="<%=aluno.instituicao%>">
             </div>
             <div class="mb-3">
                 <label for="curso" class="form-label">Curso </label>
-                <input type="text" class="form-control" value="<%=aluno.curso%>">
+                <input type="text" class="form-control" name="curso" value="<%=aluno.curso%>">
             </div>
+            <button type="submit" class="btn btn-success">Salvar</button>
         </form>
-        <button type="submit" class="btn btn-success">Salvar</button>
-        <button type="submit" class="btn btn-success">Editar</button>
-        <a href="exibeAluno.html?id=<%=aluno.id%>">
-            <button type="submit" class="btn btn-primary"><Editar</button>
         <form method="POST" style="display: inline" action="/api/aluno/<%=aluno.id%>?_method=DELETE">
             <button class="btn btn-lg btn-outline-secondary" id="delete" type="submit">Deletar</button></form>
        

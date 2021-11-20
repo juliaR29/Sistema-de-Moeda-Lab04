@@ -1,6 +1,6 @@
 require("dotenv").config();
-const cadastro = require("./routes/cadastro");
-const login = require("./routes/login");
+const aluno = require("./routes/aluno");
+const empresa = require("./routes/empresa");
 
 const {usuarioLogado} = require("./lib/security");
 
@@ -17,8 +17,8 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(usuarioLogado);
 app.use(methodOverride('_method'));
-app.use(cadastro);
-app.use(login);
+app.use(aluno);
+app.use(empresa);
 app.set("view engine", "ejs");
 
 app.listen(process.env.PORT || 5000);
