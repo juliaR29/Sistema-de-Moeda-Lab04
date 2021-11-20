@@ -15,37 +15,33 @@
         <div class="col-md-6">
             <div class="card bg-info text-white">
 
-                <form>
+                <formform method="post" action="/api/empresa">
                     <div class="text-center">
                         <h1>CADASTRO DE EMPRESA</h1>
                     </div>
                     <div class="mb-2">
                         <label for="inputName" class="form-label">Nome da Empresa</label>
-                        <input type="text" class="form-control" id="inputName">
+                        <input type="text" class="form-control" name="nome" id="inputName">
                     </div>
                     <div class="mb-2">
                         <label for="inputEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4">
+                        <input type="email" class="form-control" name="email" id="inputEmail4">
                     </div>
                     <div class="mb-1 c">
                       <label for="inputCnpj" class="form-label">CNJP</label>
-                      <input type="text" class="form-control" id="inputCnpj">
+                      <input type="text" class="form-control" name="cnpj" id="inputCnpj">
                     </div>
                     <div class="mb-1 c">
                         <label for="inputEndereço" class="form-label">Rua</label>
-                        <input type="text" class="form-control" id="inputEndereço">
+                        <input type="text" class="form-control" name="endereco" id="inputEndereço">
                     </div>
                     <div class="mb-1 c">
                         <label for="inputEndereço" class="form-label">Complemento</label>
-                        <input type="text" class="form-control" id="inputEndereço">
+                        <input type="text" class="form-control" name="complemento" id="inputEndereço">
                     </div>
                     <div class="mb-1 c">
                         <label for="inputEndereço" class="form-label">Bairro</label>
-                        <input type="text" class="form-control" id="inputEndereço">
-                    </div>
-                    <div class="mb-1 ">
-                        <label for="inputSenha" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="inputSenha">
+                        <input type="text" class="form-control" name="bairro" id="inputEndereço">
                     </div>
                     <div class="text-center t">
                         <button type="submit" class="btn btn-dark"><b>CRIAR CONTA</b></button>
