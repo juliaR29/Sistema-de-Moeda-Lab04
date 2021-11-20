@@ -36,36 +36,40 @@
 
   <div class="container">
 
-    <form>
+    <form method="post" action="/editarAluno/<%=empresa.id%>">
       <label class="col-sm-12 col-form-label col-form-label-lg"
         style="font-size: 25px;text-align: center;margin-bottom: 20px;"><b>Dados Cadastrais</b></label>
       <div class="mb-3">
         <label for="nome" class="form-label">Nome da Empresa </label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" value="<%=empresa.nome%>">
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">Email </label>
-        <input type="email" class="form-control">
+        <input type="email" class="form-control" value="<%=empresa.email%>">
       </div>
       <div class="mb-3">
         <label for="cnpj" class="form-label">CNPJ </label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" value="<%=empresa.cnpj%>">
       </div>
       <div class="mb-3">
         <label for="rua" class="form-label">Rua </label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" value="<%=empresa.rua%>">
       </div>
       <div class="mb-3">
         <label for="complemento" class="form-label">Complemento </label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" value="<%=empresa.complemento%>">
       </div>
       <div class="mb-3 ">
         <label for="bairro" class="form-label">Bairro </label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" value="<%=empresa.bairro%>">
       </div>
     </form>
-    <button type="submit" class="btn btn-primary">Editar</button>
     <button type="submit" class="btn btn-success">Salvar</button>
+        <button type="submit" class="btn btn-success">Editar</button>
+        <a href="exibeEmpresa.html?id=<%=empresa.id %>">
+            <button type="submit" class="btn btn-primary"><Editar</button>
+        <form method="POST" style="display: inline" action="/api/empresa/<%=empresa.id%>?_method=DELETE">
+            <button class="btn btn-lg btn-outline-secondary" id="delete" type="submit">Deletar</button></form>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
