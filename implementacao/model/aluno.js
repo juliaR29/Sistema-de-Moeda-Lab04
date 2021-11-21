@@ -22,7 +22,7 @@ class Aluno {
     /** @type {string} */
     curso;
 
-    
+
     constructor(dados) {
         this.id = dados.id;
         this.nome = dados.nome;
@@ -34,6 +34,17 @@ class Aluno {
         this.bairro = dados.bairro;
         this.instituicao = dados.instituicao;
         this.curso = dados.curso;
+    }
+
+    /**
+     * criar aluno
+    * @param {Object} aluno 
+    * @returns {Promise<Aluno>} 
+    */
+    static async create(dados) {
+        const { nome, email, cpf, rg, rua, complemento, bairro, instituicao, curso } = dados;
+        const result = await pool.query('INSERT INTO aluno (nome, email, cpf, rg, rua, complemento, bairro, instituicao, curso) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *', [nome, email, cpf, rg, rua, complemento, bairro, instituicao, curso]);
+        return new Aluno(result.rows[0]);
     }
 
     /**
@@ -68,17 +79,6 @@ class Aluno {
     static async delete(id) {
         await pool.query('DELETE FROM aluno WHERE id = $1', [id]);
 
-    }
-
-    /**
-     * criar aluno
-     * @param {Object} aluno 
-     * @returns {Promise<Aluno>} 
-     */
-    static async create(dados) {
-        const { nome, email, cpf, rg, rua, complemento, bairro, instituicao, curso } = dados;
-        const result = await pool.query('INSERT INTO aluno (nome, email, cpf, rg, rua, complemento, bairro, instituicao, curso) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *', [nome, email, cpf, rg, rua, complemento, bairro, instituicao, curso]);
-        return new Aluno(result.rows[0]);
     }
 
 }

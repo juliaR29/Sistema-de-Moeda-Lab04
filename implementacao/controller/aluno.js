@@ -9,7 +9,6 @@ app.get("/cadastroAluno", (req, res) => {
 
 //create
 app.post("/api/aluno", async function (req, res) {
-
   try {
     const aluno = await Aluno.create(req.body);
     const id = aluno.id;
@@ -21,7 +20,6 @@ app.post("/api/aluno", async function (req, res) {
       .send("Erro!");
     console.error(error);
   }
-
 })
 
 //read
@@ -37,8 +35,6 @@ const aluno = await Aluno.get(req.params.id);
 
 //update
 app.post("/api/aluno/:id", async function (req, res) {
-  
-
   try {
     await Aluno.update(req.params.id, req.body);
     res.status(303)
@@ -48,12 +44,11 @@ app.post("/api/aluno/:id", async function (req, res) {
     res.status(500)
       .send(erro.message);
   }
-
 })
+
 //delete
 app.delete("/api/aluno/:id", async function (req, res) {
-  const { id } = req.params;
-
+const { id } = req.params;
   try {
     await Aluno.delete(id);
     res.status(303)
@@ -63,7 +58,6 @@ app.delete("/api/aluno/:id", async function (req, res) {
     res.status(500)
       .send(erro.message);
   }
-
 })
 
 module.exports = app;

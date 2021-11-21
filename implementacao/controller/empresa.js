@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const pool = require("../lib/db");
+const { Empresa } = require("../model/empresa");
 
 
 app.get("/cadastroEmpresa", (req, res) => {
@@ -9,11 +10,9 @@ app.get("/cadastroEmpresa", (req, res) => {
 
 //create
 app.post("/api/empresa", async function (req, res) {
-  const { nome, empresa, descricao, requisitos, beneficio, salario } = req.body;
-
   try {
-    const resultado = await pool.query('INSERT INTO empresa (nome, empresa, descricao, requisitos, beneficio, salario) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id', [nome, empresa, descricao, requisitos, beneficio, salario]);
-    const id = resultado.rows[0].id;
+    const empresa = await Empresa.create(req.body);
+    const id = empresa.id;
     res.status(303)
       .header("location", `/exibeEmpresa/${id}`)
       .send("Cadastrado!");
@@ -22,40 +21,37 @@ app.post("/api/empresa", async function (req, res) {
       .send("Erro!");
     console.error(error);
   }
-
 })
 
 //read
 app.get("/exibeEmpresa/:id", async function (req, res)  {
-  const id = req.params.id;
-  const result = await pool.query('SELECT * FROM empresa WHERE id = $1', [id]);
-  res.render("exibeEmpresa", { empresa: result.rows[0]});
+  const empresa = await Empresa.get(req.params.id)
+  if (!empresa) {
+    res.status(404)
+      .send("Não encontrado!");
+    return;
+  }
+  res.render("exibeEmpresa", { empresa });
 });
 
 //update
-
 app.post("/api/empresa/:id", async function (req, res) {
-  const { id } = req.params;
-  const { nome, empresa, descricao, requisitos, beneficio, salario } = req.body;
-
   try {
-      await pool.query('UPDATE empresa SET nome = $1, empresa = $2, descricao = $3, requisitos = $4, beneficio = $5, salario = $6 WHERE id = $7', [nome, empresa, descricao, requisitos, beneficio, salario, id]);
+      await Empresa.update(req.params.id, req.body);
       res.status(303)
-          .header("location", "/exibeAluno")
+          .header("location", `/exibeEmpresa/${req.params.id}`)
           .send("Atualizado!");
   } catch (erro) {
       res.status(500)
           .send(erro.message);
   }
-
 })
 
 //delete
 app.delete("/api/empresa/:id", async function (req, res) {
   const { id } = req.params;
-
   try {
-      await pool.query('DELETE FROM empresa WHERE id = $1', [id]);
+      await Empresa.delete(id);
       res.status(303)
           .header("location", "/cadastroEmpresa")
           .send("Deletado!");
@@ -63,6 +59,6 @@ app.delete("/api/empresa/:id", async function (req, res) {
       res.status(500)
           .send(erro.message);
   }
-
 })
+
 module.exports = app;
